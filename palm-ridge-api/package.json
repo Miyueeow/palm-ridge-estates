@@ -1,0 +1,6 @@
+{
+  "name": "palm-ridge-api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Serverless API proxy for Palm Ridge Estates' AI lot finder. Keeps the Anthropic API key server-side."
+}

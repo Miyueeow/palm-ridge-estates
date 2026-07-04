@@ -76,10 +76,20 @@ Then just open `docs/index.html` or `docs/analytics.html` directly in a browser.
 
 ## Roadmap / ideas for extending this
 
-- Swap the rule-based "lot finder" in the map for a real Claude API call (natural language → ranked lot matches)
+- ~~Swap the rule-based "lot finder" in the map for a real Claude API call~~ ✅ Done — see `palm-ridge-api/`
 - Turn `analyze.py` into a scheduled job (cron / n8n) that regenerates `analytics.json` weekly and posts a digest to Slack/email
 - Replace the linear-trend forecast with a proper time-series model (e.g. Prophet) once there's more historical data
 - Add a `sales_log` ingestion step that could pull from a real CRM export
+
+## AI Lot Finder (real Claude API)
+
+The map's "Ask the Lot Finder" box calls a real Claude API through a small
+serverless proxy, so the API key never touches the browser. See
+[`palm-ridge-api/README.md`](palm-ridge-api/README.md) for deployment steps.
+
+Once deployed, set the endpoint in `config.json` (copy `config.example.json`)
+and re-run `python scripts/build_dashboards.py` to bake the URL into
+`docs/index.html`.
 
 ## License / disclaimer
 

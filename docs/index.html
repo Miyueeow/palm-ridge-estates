@@ -409,40 +409,54 @@ priceFilter.addEventListener('input', e => {
   renderLots();
 });
 
-// Simple rule-based "AI" lot finder (stand-in for a real LLM call)
-document.getElementById('aiRun').addEventListener('click', () => {
-  const query = document.getElementById('aiQuery').value.toLowerCase();
+// AI lot finder — calls the real Claude API via a Vercel serverless proxy.
+// The proxy holds the API key server-side; see /palm-ridge-api in the repo.
+const LOT_FINDER_API_URL = "https://palm-ridge-api.vercel.app/api/lot-finder"; // e.g. https://palm-ridge-api.vercel.app/api/lot-finder
+
+document.getElementById('aiRun').addEventListener('click', async () => {
+  const query = document.getElementById('aiQuery').value.trim();
   const resultBox = document.getElementById('aiResult');
+  const runButton = document.getElementById('aiRun');
 
-  let candidates = DATA.lots.filter(passesFilter).filter(l => l.status === "available");
+  if (!query) return;
 
-  const bedMatch = query.match(/(\d)\s*(br|bed|bedroom)/);
-  if (bedMatch) {
-    const n = parseInt(bedMatch[1]);
-    candidates = candidates.filter(l => l.bedrooms >= n);
-  }
-  const priceMatch = query.match(/under\s*([\d.]+)\s*m/);
-  if (priceMatch) {
-    const cap = parseFloat(priceMatch[1]) * 1_000_000;
-    candidates = candidates.filter(l => l.price_php <= cap);
-  }
-  if (query.includes("corner")) candidates = candidates.filter(l => l.lot_type === "corner");
-  if (query.includes("cul-de-sac") || query.includes("cul de sac")) candidates = candidates.filter(l => l.lot_type === "cul-de-sac");
-  if (query.includes("entrance") || query.includes("close") || query.includes("near")) {
-    candidates.sort((a,b) => a.distance_to_entrance_m - b.distance_to_entrance_m);
-  } else {
-    candidates.sort((a,b) => a.price_php - b.price_php);
-  }
+  const candidates = DATA.lots.filter(passesFilter).filter(l => l.status === "available");
 
-  const top = candidates.slice(0, 4);
   resultBox.style.display = 'block';
-  if (top.length === 0) {
-    resultBox.innerHTML = "No available lots match that. Try loosening a constraint.";
-  } else {
-    resultBox.innerHTML = "Best matches: " + top.map(l =>
-      `<br>• <strong>${l.lot_id}</strong> — ${l.bedrooms}BR, ${l.area_sqm}sqm, ${fmtPHP(l.price_php)}, ${l.distance_to_entrance_m}m to entrance`
-    ).join("");
+  resultBox.innerHTML = "Thinking...";
+  runButton.disabled = true;
 
+  let top = [];
+  try {
+    const res = await fetch(LOT_FINDER_API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ query, lots: candidates })
+    });
+
+    if (!res.ok) throw new Error("API error " + res.status);
+    const data = await res.json();
+
+    top = (data.matches || [])
+      .map(id => candidates.find(l => l.lot_id === id))
+      .filter(Boolean);
+
+    resultBox.innerHTML = data.explanation || "Here's what I found.";
+    if (top.length > 0) {
+      resultBox.innerHTML += "<br><br>" + top.map(l =>
+        `• <strong>${l.lot_id}</strong> — ${l.bedrooms}BR, ${l.area_sqm}sqm, ${fmtPHP(l.price_php)}, ${l.distance_to_entrance_m}m to entrance`
+      ).join("<br>");
+    }
+  } catch (err) {
+    console.error(err);
+    resultBox.innerHTML = "Sorry, the lot finder is temporarily unavailable. (Is the API proxy deployed and reachable?)";
+  } finally {
+    runButton.disabled = false;
+  }
+
+  if (top.length === 0) {
+    // nothing further to highlight
+  } else {
     // highlight on map
     top.forEach(l => {
       const layer = lotLayers[l.lot_id];
