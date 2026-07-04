@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Palm Ridge Estates — Sales Analytics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  :root{
+    --forest:#1F3A2E;
+    --forest-dark:#152A21;
+    --clay:#B85C38;
+    --moss:#7A9B76;
+    --mustard:#D4A64A;
+    --limestone:#EDE7D9;
+    --paper:#F7F4EC;
+    --ink:#2B2E2A;
+    --ink-soft:#5C6259;
+    --line:#D9D2C0;
+    --white:#FFFFFF;
+    --forecast-line:#8B95AE;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);font-family:'Inter',sans-serif;}
+
+  .topbar{
+    background:var(--forest);
+    color:var(--limestone);
+    padding:18px 32px;
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+    flex-wrap:wrap;
+    border-bottom:3px solid var(--clay);
+  }
+  .topbar .brand{
+    font-family:'Fraunces',serif;
+    font-size:24px;
+    font-weight:600;
+    color:var(--white);
+  }
+  .topbar .eyebrow{
+    font-size:12.5px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:#B8C9BB;
+    font-weight:500;
+  }
+
+  .wrap{max-width:1180px;margin:0 auto;padding:28px 24px 60px;}
+
+  .kpi-row{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:14px;
+    margin-bottom:32px;
+  }
+  .kpi-card{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-left:4px solid var(--forest);
+    border-radius:8px;
+    padding:16px 16px 14px;
+  }
+  .kpi-card.accent-clay{border-left-color:var(--clay);}
+  .kpi-card.accent-mustard{border-left-color:var(--mustard);}
+  .kpi-card .val{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:24px;
+    font-weight:500;
+    color:var(--forest-dark);
+    display:block;
+    line-height:1.15;
+  }
+  .kpi-card .label{
+    font-size:11.5px;
+    color:var(--ink-soft);
+    text-transform:uppercase;
+    letter-spacing:0.03em;
+    margin-top:4px;
+    display:block;
+  }
+
+  .section-title{
+    font-family:'Fraunces',serif;
+    font-size:19px;
+    font-weight:600;
+    color:var(--forest-dark);
+    margin:0 0 4px;
+  }
+  .section-sub{
+    font-size:13px;
+    color:var(--ink-soft);
+    margin:0 0 16px;
+  }
+
+  .panel{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:22px 24px;
+    margin-bottom:26px;
+  }
+
+  .two-col{display:grid;grid-template-columns:1.4fr 1fr;gap:20px;}
+  .chart-box{position:relative;height:280px;}
+  .chart-box.tall{height:320px;}
+
+  table{width:100%;border-collapse:collapse;font-size:13.5px;}
+  th{
+    text-align:left;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    color:var(--ink-soft);
+    padding:8px 10px;
+    border-bottom:2px solid var(--line);
+  }
+  td{padding:9px 10px;border-bottom:1px solid var(--line);}
+  tr:last-child td{border-bottom:none;}
+  td.num, th.num{text-align:right;font-family:'IBM Plex Mono',monospace;}
+  .rank-badge{
+    display:inline-flex;
+    align-items:center;justify-content:center;
+    width:20px;height:20px;
+    border-radius:50%;
+    background:var(--limestone);
+    color:var(--forest-dark);
+    font-size:11px;
+    font-weight:700;
+    margin-right:6px;
+  }
+  .rank-badge.top{background:var(--mustard);color:var(--white);}
+
+  .phase-bar-row{margin-bottom:14px;}
+  .phase-bar-label{display:flex;justify-content:space-between;font-size:13px;margin-bottom:5px;}
+  .phase-bar-label .pct{font-family:'IBM Plex Mono',monospace;color:var(--ink-soft);}
+  .phase-bar-track{
+    height:14px;
+    background:var(--limestone);
+    border-radius:7px;
+    overflow:hidden;
+    display:flex;
+  }
+  .phase-bar-seg{height:100%;}
+
+  .legend-inline{display:flex;gap:16px;font-size:12px;color:var(--ink-soft);margin-top:10px;flex-wrap:wrap;}
+  .legend-inline span{display:flex;align-items:center;gap:5px;}
+  .legend-dot{width:10px;height:10px;border-radius:2px;display:inline-block;}
+
+  .badge-forecast{
+    background:var(--limestone);
+    color:var(--ink-soft);
+    font-size:11px;
+    padding:2px 8px;
+    border-radius:12px;
+    font-weight:600;
+  }
+
+  @media (max-width:900px){
+    .kpi-row{grid-template-columns:repeat(2,1fr);}
+    .two-col{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="brand">Palm Ridge Estates</div>
+  <div class="eyebrow">Sales Analytics &amp; Forecast · Phases 1–3</div>
+</div>
+
+<div class="wrap">
+
+  <div class="kpi-row" id="kpiRow"></div>
+
+  <div class="panel">
+    <h2 class="section-title">Monthly Sales Velocity &amp; 3-Month Forecast</h2>
+    <p class="section-sub">Lots sold per month (actuals), with a linear-trend forecast for the next quarter. Solid bars are actuals; the dashed segment is projected.</p>
+    <div class="chart-box tall"><canvas id="velocityChart"></canvas></div>
+  </div>
+
+  <div class="two-col">
+    <div class="panel">
+      <h2 class="section-title">Monthly Revenue vs. Forecast</h2>
+      <p class="section-sub">Realized revenue from closed sales, projected forward using the same trend.</p>
+      <div class="chart-box"><canvas id="revenueChart"></canvas></div>
+    </div>
+
+    <div class="panel">
+      <h2 class="section-title">Time to Close</h2>
+      <p class="section-sub">Average days from lifecycle stage to stage, overall.</p>
+      <div class="chart-box"><canvas id="ttcChart"></canvas></div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="panel">
+      <h2 class="section-title">Agent Leaderboard</h2>
+      <p class="section-sub">Ranked by total revenue closed.</p>
+      <table>
+        <thead><tr><th>Agent</th><th class="num">Lots Sold</th><th class="num">Revenue</th><th class="num">Avg. Days to Close</th></tr></thead>
+        <tbody id="agentTable"></tbody>
+      </table>
+    </div>
+
+    <div class="panel">
+      <h2 class="section-title">Inventory Burn-down by Phase</h2>
+      <p class="section-sub">Share of lots sold, reserved, and available per phase.</p>
+      <div id="phaseBars"></div>
+      <div class="legend-inline">
+        <span><span class="legend-dot" style="background:#B85C38"></span>Sold</span>
+        <span><span class="legend-dot" style="background:#D4A64A"></span>Reserved</span>
+        <span><span class="legend-dot" style="background:#7A9B76"></span>Available</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const DATA = __ANALYTICS_PLACEHOLDER__
+;
+
+function fmtPHP(n){ return "₱" + Math.round(n).toLocaleString("en-US"); }
+function fmtPHPShort(n){
+  if (n >= 1e6) return "₱" + (n/1e6).toFixed(1) + "M";
+  if (n >= 1e3) return "₱" + (n/1e3).toFixed(0) + "K";
+  return "₱" + n;
+}
+
+// ---- KPI cards ----
+const k = DATA.kpis;
+const kpiHtml = `
+  <div class="kpi-card">
+    <span class="val">${k.total_lots}</span>
+    <span class="label">Total Lots</span>
+  </div>
+  <div class="kpi-card accent-clay">
+    <span class="val">${k.pct_sold}%</span>
+    <span class="label">Sold (${k.total_sold} lots)</span>
+  </div>
+  <div class="kpi-card">
+    <span class="val">${fmtPHPShort(k.total_revenue)}</span>
+    <span class="label">Revenue to Date</span>
+  </div>
+  <div class="kpi-card accent-mustard">
+    <span class="val">${fmtPHPShort(k.remaining_inventory_value)}</span>
+    <span class="label">Remaining Inventory Value</span>
+  </div>
+  <div class="kpi-card">
+    <span class="val">${k.avg_monthly_velocity}</span>
+    <span class="label">Avg. Lots Sold / Month</span>
+  </div>
+`;
+document.getElementById('kpiRow').innerHTML = kpiHtml;
+
+// ---- Velocity chart (actuals + forecast) ----
+const months = DATA.monthly_actuals.map(m => m.month);
+const actualCounts = DATA.monthly_actuals.map(m => m.lots_sold);
+const forecastMonths = DATA.forecast.map(f => f.month);
+const forecastCounts = DATA.forecast.map(f => f.lots_sold);
+
+const allMonths = [...months, ...forecastMonths];
+const actualData = [...actualCounts, ...forecastMonths.map(()=>null)];
+const forecastData = [...months.map(()=>null), ...forecastCounts];
+// bridge point so the forecast line connects visually
+if (actualData.length > months.length - 1) {
+  forecastData[months.length - 1] = actualCounts[actualCounts.length - 1];
+}
+
+new Chart(document.getElementById('velocityChart'), {
+  type: 'bar',
+  data: {
+    labels: allMonths,
+    datasets: [
+      {
+        label: 'Lots Sold (Actual)',
+        data: actualData,
+        backgroundColor: '#B85C38',
+        borderRadius: 3,
+      },
+      {
+        label: 'Forecast',
+        data: forecastData,
+        backgroundColor: 'rgba(139,149,174,0.35)',
+        borderColor: '#8B95AE',
+        borderWidth: 1.5,
+        borderDash: [5,3],
+        borderRadius: 3,
+      }
+    ]
+  },
+  options: {
+    responsive:true, maintainAspectRatio:false,
+    plugins:{ legend:{ position:'top', labels:{ font:{family:"'Inter',sans-serif", size:12} } } },
+    scales:{
+      x:{ grid:{ display:false }, ticks:{ font:{family:"'IBM Plex Mono',monospace", size:10.5} } },
+      y:{ beginAtZero:true, ticks:{ font:{family:"'IBM Plex Mono',monospace", size:10.5}, precision:0 }, grid:{ color:'#EDE7D9' } }
+    }
+  }
+});
+
+// ---- Revenue chart ----
+const actualRev = DATA.monthly_actuals.map(m => m.revenue);
+const forecastRev = DATA.forecast.map(f => f.revenue);
+const revActualData = [...actualRev, ...forecastMonths.map(()=>null)];
+const revForecastData = [...months.map(()=>null), ...forecastRev];
+if (revForecastData.length > months.length - 1) {
+  revForecastData[months.length - 1] = actualRev[actualRev.length - 1];
+}
+
+new Chart(document.getElementById('revenueChart'), {
+  type: 'line',
+  data: {
+    labels: allMonths,
+    datasets: [
+      {
+        label: 'Revenue (Actual)',
+        data: revActualData,
+        borderColor: '#1F3A2E',
+        backgroundColor: 'rgba(31,58,46,0.08)',
+        fill:true, tension:0.25, pointRadius:3
+      },
+      {
+        label: 'Forecast',
+        data: revForecastData,
+        borderColor: '#8B95AE',
+        borderDash:[5,3],
+        fill:false, tension:0.25, pointRadius:3
+      }
+    ]
+  },
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    plugins:{
+      legend:{ position:'top', labels:{ font:{family:"'Inter',sans-serif", size:12} } },
+      tooltip:{ callbacks:{ label: ctx => ctx.dataset.label + ': ' + fmtPHP(ctx.raw) } }
+    },
+    scales:{
+      x:{ grid:{ display:false }, ticks:{ font:{family:"'IBM Plex Mono',monospace", size:10} } },
+      y:{ ticks:{ callback:v=>fmtPHPShort(v), font:{family:"'IBM Plex Mono',monospace", size:10} }, grid:{ color:'#EDE7D9' } }
+    }
+  }
+});
+
+// ---- Time-to-close chart ----
+const ttc = DATA.time_to_close.overall;
+new Chart(document.getElementById('ttcChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Listed → Reserved', 'Reserved → Sold', 'Listed → Sold (Total)'],
+    datasets: [{
+      data: [ttc.avg_days_listed_to_reserved, ttc.avg_days_reserved_to_sold, ttc.avg_days_listed_to_sold],
+      backgroundColor: ['#7A9B76', '#D4A64A', '#1F3A2E'],
+      borderRadius: 4,
+    }]
+  },
+  options:{
+    indexAxis:'y',
+    responsive:true, maintainAspectRatio:false,
+    plugins:{ legend:{ display:false }, tooltip:{ callbacks:{ label: ctx => ctx.raw + ' days' } } },
+    scales:{
+      x:{ beginAtZero:true, ticks:{ font:{family:"'IBM Plex Mono',monospace", size:10.5} }, grid:{ color:'#EDE7D9' } },
+      y:{ grid:{ display:false }, ticks:{ font:{family:"'Inter',sans-serif", size:12} } }
+    }
+  }
+});
+
+// ---- Agent table ----
+const agentRows = DATA.agent_leaderboard.map((a, i) => `
+  <tr>
+    <td><span class="rank-badge ${i===0?'top':''}">${i+1}</span>${a.agent}</td>
+    <td class="num">${a.lots_sold}</td>
+    <td class="num">${fmtPHPShort(a.revenue)}</td>
+    <td class="num">${a.avg_days_to_close}</td>
+  </tr>
+`).join('');
+document.getElementById('agentTable').innerHTML = agentRows;
+
+// ---- Phase burn-down bars ----
+const phaseHtml = DATA.phase_summary.map(p => {
+  const soldPct = (p.sold/p.total*100);
+  const resPct = (p.reserved/p.total*100);
+  const availPct = (p.available/p.total*100);
+  return `
+    <div class="phase-bar-row">
+      <div class="phase-bar-label">
+        <span>Phase ${p.phase}</span>
+        <span class="pct">${p.pct_sold}% sold</span>
+      </div>
+      <div class="phase-bar-track">
+        <div class="phase-bar-seg" style="width:${soldPct}%;background:#B85C38;"></div>
+        <div class="phase-bar-seg" style="width:${resPct}%;background:#D4A64A;"></div>
+        <div class="phase-bar-seg" style="width:${availPct}%;background:#7A9B76;"></div>
+      </div>
+    </div>
+  `;
+}).join('');
+document.getElementById('phaseBars').innerHTML = phaseHtml;
+</script>
+</body>
+</html>

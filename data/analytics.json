@@ -1,0 +1,214 @@
+{
+  "kpis": {
+    "total_lots": 96,
+    "total_sold": 45,
+    "pct_sold": 46.9,
+    "total_revenue": 121861995,
+    "remaining_inventory_value": 86709880,
+    "avg_monthly_velocity": 2.0
+  },
+  "monthly_actuals": [
+    {
+      "month": "2024-09",
+      "lots_sold": 1,
+      "revenue": 3196400
+    },
+    {
+      "month": "2024-10",
+      "lots_sold": 2,
+      "revenue": 4220370
+    },
+    {
+      "month": "2024-11",
+      "lots_sold": 1,
+      "revenue": 1964690
+    },
+    {
+      "month": "2024-12",
+      "lots_sold": 1,
+      "revenue": 1834920
+    },
+    {
+      "month": "2025-01",
+      "lots_sold": 2,
+      "revenue": 4685720
+    },
+    {
+      "month": "2025-02",
+      "lots_sold": 1,
+      "revenue": 1787200
+    },
+    {
+      "month": "2025-03",
+      "lots_sold": 2,
+      "revenue": 3271590
+    },
+    {
+      "month": "2025-04",
+      "lots_sold": 3,
+      "revenue": 6152970
+    },
+    {
+      "month": "2025-05",
+      "lots_sold": 4,
+      "revenue": 13136760
+    },
+    {
+      "month": "2025-06",
+      "lots_sold": 2,
+      "revenue": 4802440
+    },
+    {
+      "month": "2025-07",
+      "lots_sold": 3,
+      "revenue": 8206840
+    },
+    {
+      "month": "2025-08",
+      "lots_sold": 0,
+      "revenue": 0
+    },
+    {
+      "month": "2025-09",
+      "lots_sold": 1,
+      "revenue": 1857300
+    },
+    {
+      "month": "2025-10",
+      "lots_sold": 3,
+      "revenue": 9284310
+    },
+    {
+      "month": "2025-11",
+      "lots_sold": 2,
+      "revenue": 6376590
+    },
+    {
+      "month": "2025-12",
+      "lots_sold": 1,
+      "revenue": 2146100
+    },
+    {
+      "month": "2026-01",
+      "lots_sold": 0,
+      "revenue": 0
+    },
+    {
+      "month": "2026-02",
+      "lots_sold": 4,
+      "revenue": 14384170
+    },
+    {
+      "month": "2026-03",
+      "lots_sold": 1,
+      "revenue": 1708020
+    },
+    {
+      "month": "2026-04",
+      "lots_sold": 1,
+      "revenue": 3119310
+    },
+    {
+      "month": "2026-05",
+      "lots_sold": 2,
+      "revenue": 5486490
+    },
+    {
+      "month": "2026-06",
+      "lots_sold": 3,
+      "revenue": 7759720
+    },
+    {
+      "month": "2026-07",
+      "lots_sold": 5,
+      "revenue": 16480085
+    }
+  ],
+  "forecast": [
+    {
+      "month": "2026-08",
+      "lots_sold": 3,
+      "revenue": 8003939
+    },
+    {
+      "month": "2026-09",
+      "lots_sold": 3,
+      "revenue": 8229405
+    },
+    {
+      "month": "2026-10",
+      "lots_sold": 3,
+      "revenue": 8454871
+    }
+  ],
+  "time_to_close": {
+    "overall": {
+      "avg_days_listed_to_reserved": 24.3,
+      "avg_days_reserved_to_sold": 29.8,
+      "avg_days_listed_to_sold": 53.9
+    },
+    "by_phase": {
+      "1": 52.8,
+      "2": 55.0,
+      "3": 55.0
+    }
+  },
+  "agent_leaderboard": [
+    {
+      "agent": "K. Villanueva",
+      "lots_sold": 13,
+      "revenue": 37178065,
+      "avg_days_to_close": 50.8
+    },
+    {
+      "agent": "J. Cruz",
+      "lots_sold": 12,
+      "revenue": 34042410,
+      "avg_days_to_close": 48.8
+    },
+    {
+      "agent": "A. Reyes",
+      "lots_sold": 6,
+      "revenue": 18880990,
+      "avg_days_to_close": 73.5
+    },
+    {
+      "agent": "M. Santos",
+      "lots_sold": 7,
+      "revenue": 16482450,
+      "avg_days_to_close": 42.0
+    },
+    {
+      "agent": "R. Dela Cruz",
+      "lots_sold": 7,
+      "revenue": 15278080,
+      "avg_days_to_close": 63.3
+    }
+  ],
+  "phase_summary": [
+    {
+      "phase": 1,
+      "total": 32,
+      "sold": 23,
+      "reserved": 6,
+      "available": 3,
+      "pct_sold": 71.9
+    },
+    {
+      "phase": 2,
+      "total": 32,
+      "sold": 19,
+      "reserved": 6,
+      "available": 7,
+      "pct_sold": 59.4
+    },
+    {
+      "phase": 3,
+      "total": 32,
+      "sold": 3,
+      "reserved": 10,
+      "available": 19,
+      "pct_sold": 9.4
+    }
+  ]
+}

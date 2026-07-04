@@ -1,0 +1,209 @@
+lot_id,event,event_date,agent
+LOT-0001,listed,2026-04-24,R. Dela Cruz
+LOT-0001,reserved,2026-05-31,R. Dela Cruz
+LOT-0001,sold,2026-06-10,R. Dela Cruz
+LOT-0002,listed,2024-12-21,R. Dela Cruz
+LOT-0002,reserved,2025-02-03,R. Dela Cruz
+LOT-0002,sold,2025-03-24,R. Dela Cruz
+LOT-0003,listed,2026-05-16,J. Cruz
+LOT-0003,reserved,2026-06-15,J. Cruz
+LOT-0003,sold,2026-07-04,J. Cruz
+LOT-0004,listed,2025-05-19,A. Reyes
+LOT-0004,reserved,2025-06-29,A. Reyes
+LOT-0004,sold,2025-07-20,A. Reyes
+LOT-0005,listed,2024-12-14,M. Santos
+LOT-0005,reserved,2024-12-21,M. Santos
+LOT-0005,sold,2024-12-28,M. Santos
+LOT-0006,listed,2025-06-09,J. Cruz
+LOT-0006,reserved,2025-06-22,J. Cruz
+LOT-0006,sold,2025-07-20,J. Cruz
+LOT-0007,listed,2026-06-17,K. Villanueva
+LOT-0007,reserved,2026-07-04,K. Villanueva
+LOT-0007,sold,2026-07-04,K. Villanueva
+LOT-0008,listed,2024-07-03,K. Villanueva
+LOT-0008,reserved,2024-07-26,K. Villanueva
+LOT-0009,listed,2026-04-03,K. Villanueva
+LOT-0009,reserved,2026-05-07,K. Villanueva
+LOT-0010,listed,2025-08-13,J. Cruz
+LOT-0010,reserved,2025-09-22,J. Cruz
+LOT-0010,sold,2025-10-22,J. Cruz
+LOT-0011,listed,2024-11-04,K. Villanueva
+LOT-0011,reserved,2024-12-17,K. Villanueva
+LOT-0011,sold,2025-01-01,K. Villanueva
+LOT-0012,listed,2025-02-13,A. Reyes
+LOT-0012,reserved,2025-03-23,A. Reyes
+LOT-0012,sold,2025-05-22,A. Reyes
+LOT-0013,listed,2025-03-28,M. Santos
+LOT-0013,reserved,2025-04-27,M. Santos
+LOT-0014,listed,2025-04-02,R. Dela Cruz
+LOT-0014,reserved,2025-05-15,R. Dela Cruz
+LOT-0015,listed,2025-04-28,A. Reyes
+LOT-0015,reserved,2025-06-01,A. Reyes
+LOT-0016,listed,2024-08-20,K. Villanueva
+LOT-0016,reserved,2024-08-28,K. Villanueva
+LOT-0016,sold,2024-10-18,K. Villanueva
+LOT-0017,listed,2025-11-23,R. Dela Cruz
+LOT-0018,listed,2025-07-14,J. Cruz
+LOT-0018,reserved,2025-08-28,J. Cruz
+LOT-0019,listed,2024-06-22,M. Santos
+LOT-0019,reserved,2024-08-01,M. Santos
+LOT-0019,sold,2024-09-10,M. Santos
+LOT-0020,listed,2024-08-09,J. Cruz
+LOT-0020,reserved,2024-08-14,J. Cruz
+LOT-0020,sold,2024-10-13,J. Cruz
+LOT-0021,listed,2024-10-14,K. Villanueva
+LOT-0021,reserved,2024-11-22,K. Villanueva
+LOT-0021,sold,2025-01-02,K. Villanueva
+LOT-0022,listed,2025-05-29,K. Villanueva
+LOT-0022,reserved,2025-06-28,K. Villanueva
+LOT-0022,sold,2025-07-29,K. Villanueva
+LOT-0023,listed,2025-02-10,R. Dela Cruz
+LOT-0023,reserved,2025-02-25,R. Dela Cruz
+LOT-0023,sold,2025-03-14,R. Dela Cruz
+LOT-0024,listed,2025-08-28,A. Reyes
+LOT-0024,reserved,2025-10-05,A. Reyes
+LOT-0024,sold,2025-10-16,A. Reyes
+LOT-0025,listed,2025-01-05,M. Santos
+LOT-0025,reserved,2025-02-02,M. Santos
+LOT-0025,sold,2025-02-10,M. Santos
+LOT-0026,listed,2025-08-08,R. Dela Cruz
+LOT-0027,listed,2026-06-24,J. Cruz
+LOT-0027,reserved,2026-07-04,J. Cruz
+LOT-0027,sold,2026-07-04,J. Cruz
+LOT-0028,listed,2025-11-03,A. Reyes
+LOT-0029,listed,2024-10-01,R. Dela Cruz
+LOT-0029,reserved,2024-11-09,R. Dela Cruz
+LOT-0029,sold,2024-11-29,R. Dela Cruz
+LOT-0030,listed,2024-12-27,J. Cruz
+LOT-0030,reserved,2025-02-10,J. Cruz
+LOT-0030,sold,2025-04-01,J. Cruz
+LOT-0031,listed,2025-04-20,K. Villanueva
+LOT-0031,reserved,2025-04-27,K. Villanueva
+LOT-0031,sold,2025-05-02,K. Villanueva
+LOT-0032,listed,2025-05-24,J. Cruz
+LOT-0032,reserved,2025-05-31,J. Cruz
+LOT-0032,sold,2025-06-20,J. Cruz
+LOT-0033,listed,2025-08-01,A. Reyes
+LOT-0034,listed,2025-07-23,R. Dela Cruz
+LOT-0035,listed,2025-11-06,A. Reyes
+LOT-0035,reserved,2025-11-25,A. Reyes
+LOT-0036,listed,2026-01-21,K. Villanueva
+LOT-0036,reserved,2026-02-09,K. Villanueva
+LOT-0036,sold,2026-02-24,K. Villanueva
+LOT-0037,listed,2025-12-05,J. Cruz
+LOT-0037,reserved,2025-12-10,J. Cruz
+LOT-0037,sold,2026-02-06,J. Cruz
+LOT-0038,listed,2026-06-04,M. Santos
+LOT-0038,reserved,2026-06-09,M. Santos
+LOT-0038,sold,2026-07-04,M. Santos
+LOT-0039,listed,2026-03-19,M. Santos
+LOT-0040,listed,2026-03-13,J. Cruz
+LOT-0041,listed,2026-05-21,K. Villanueva
+LOT-0041,reserved,2026-05-26,K. Villanueva
+LOT-0041,sold,2026-07-04,K. Villanueva
+LOT-0042,listed,2025-03-13,K. Villanueva
+LOT-0042,reserved,2025-04-27,K. Villanueva
+LOT-0042,sold,2025-05-14,K. Villanueva
+LOT-0043,listed,2025-08-17,J. Cruz
+LOT-0043,reserved,2025-08-21,J. Cruz
+LOT-0043,sold,2025-09-02,J. Cruz
+LOT-0044,listed,2026-03-09,R. Dela Cruz
+LOT-0044,reserved,2026-04-01,R. Dela Cruz
+LOT-0044,sold,2026-05-03,R. Dela Cruz
+LOT-0045,listed,2025-03-01,R. Dela Cruz
+LOT-0045,reserved,2025-04-06,R. Dela Cruz
+LOT-0045,sold,2025-06-01,R. Dela Cruz
+LOT-0046,listed,2025-08-08,A. Reyes
+LOT-0046,reserved,2025-09-22,A. Reyes
+LOT-0046,sold,2025-11-20,A. Reyes
+LOT-0047,listed,2026-02-20,R. Dela Cruz
+LOT-0047,reserved,2026-03-13,R. Dela Cruz
+LOT-0048,listed,2025-12-17,K. Villanueva
+LOT-0048,reserved,2026-01-08,K. Villanueva
+LOT-0049,listed,2026-01-05,K. Villanueva
+LOT-0049,reserved,2026-02-18,K. Villanueva
+LOT-0049,sold,2026-03-15,K. Villanueva
+LOT-0050,listed,2025-07-24,R. Dela Cruz
+LOT-0050,reserved,2025-08-28,R. Dela Cruz
+LOT-0051,listed,2025-03-13,K. Villanueva
+LOT-0051,reserved,2025-03-18,K. Villanueva
+LOT-0051,sold,2025-04-07,K. Villanueva
+LOT-0052,listed,2025-11-09,M. Santos
+LOT-0052,reserved,2025-12-07,M. Santos
+LOT-0052,sold,2025-12-27,M. Santos
+LOT-0053,listed,2025-12-11,A. Reyes
+LOT-0053,reserved,2025-12-29,A. Reyes
+LOT-0053,sold,2026-02-26,A. Reyes
+LOT-0054,listed,2026-01-08,R. Dela Cruz
+LOT-0055,listed,2025-07-11,M. Santos
+LOT-0056,listed,2025-04-09,M. Santos
+LOT-0056,reserved,2025-04-30,M. Santos
+LOT-0057,listed,2025-09-13,M. Santos
+LOT-0057,reserved,2025-09-25,M. Santos
+LOT-0057,sold,2025-11-14,M. Santos
+LOT-0058,listed,2025-06-14,K. Villanueva
+LOT-0058,reserved,2025-07-13,K. Villanueva
+LOT-0059,listed,2026-03-21,K. Villanueva
+LOT-0059,reserved,2026-04-17,K. Villanueva
+LOT-0059,sold,2026-06-15,K. Villanueva
+LOT-0060,listed,2025-03-15,K. Villanueva
+LOT-0060,reserved,2025-04-11,K. Villanueva
+LOT-0060,sold,2025-05-07,K. Villanueva
+LOT-0061,listed,2025-12-14,A. Reyes
+LOT-0061,reserved,2026-01-28,A. Reyes
+LOT-0061,sold,2026-02-03,A. Reyes
+LOT-0062,listed,2025-08-15,J. Cruz
+LOT-0062,reserved,2025-08-31,J. Cruz
+LOT-0062,sold,2025-10-04,J. Cruz
+LOT-0063,listed,2026-05-02,A. Reyes
+LOT-0064,listed,2025-03-21,M. Santos
+LOT-0064,reserved,2025-03-25,M. Santos
+LOT-0064,sold,2025-04-14,M. Santos
+LOT-0065,listed,2026-01-25,K. Villanueva
+LOT-0066,listed,2026-02-18,A. Reyes
+LOT-0067,listed,2026-06-02,M. Santos
+LOT-0068,listed,2026-06-25,A. Reyes
+LOT-0069,listed,2026-04-09,J. Cruz
+LOT-0070,listed,2026-07-01,M. Santos
+LOT-0070,reserved,2026-07-04,M. Santos
+LOT-0071,listed,2026-06-30,R. Dela Cruz
+LOT-0072,listed,2026-06-11,R. Dela Cruz
+LOT-0072,reserved,2026-07-04,R. Dela Cruz
+LOT-0073,listed,2026-04-04,J. Cruz
+LOT-0073,reserved,2026-04-20,J. Cruz
+LOT-0073,sold,2026-05-17,J. Cruz
+LOT-0074,listed,2026-01-31,R. Dela Cruz
+LOT-0074,reserved,2026-03-01,R. Dela Cruz
+LOT-0074,sold,2026-04-06,R. Dela Cruz
+LOT-0075,listed,2026-02-14,M. Santos
+LOT-0076,listed,2026-04-21,R. Dela Cruz
+LOT-0077,listed,2026-02-03,M. Santos
+LOT-0078,listed,2026-01-25,J. Cruz
+LOT-0078,reserved,2026-02-27,J. Cruz
+LOT-0079,listed,2026-02-16,R. Dela Cruz
+LOT-0079,reserved,2026-02-19,R. Dela Cruz
+LOT-0080,listed,2026-06-11,K. Villanueva
+LOT-0081,listed,2026-02-26,A. Reyes
+LOT-0081,reserved,2026-03-12,A. Reyes
+LOT-0082,listed,2025-12-19,R. Dela Cruz
+LOT-0083,listed,2026-02-02,R. Dela Cruz
+LOT-0083,reserved,2026-02-12,R. Dela Cruz
+LOT-0084,listed,2026-04-30,K. Villanueva
+LOT-0085,listed,2026-05-10,M. Santos
+LOT-0086,listed,2025-12-01,K. Villanueva
+LOT-0086,reserved,2025-12-30,K. Villanueva
+LOT-0087,listed,2025-12-19,J. Cruz
+LOT-0087,reserved,2026-01-05,J. Cruz
+LOT-0088,listed,2026-06-30,M. Santos
+LOT-0089,listed,2026-01-01,K. Villanueva
+LOT-0090,listed,2026-05-03,A. Reyes
+LOT-0091,listed,2026-04-30,J. Cruz
+LOT-0091,reserved,2026-05-04,J. Cruz
+LOT-0091,sold,2026-06-26,J. Cruz
+LOT-0092,listed,2026-01-16,R. Dela Cruz
+LOT-0093,listed,2026-02-21,A. Reyes
+LOT-0094,listed,2025-12-10,A. Reyes
+LOT-0094,reserved,2026-01-11,A. Reyes
+LOT-0095,listed,2026-06-30,A. Reyes
+LOT-0096,listed,2026-06-12,K. Villanueva
+LOT-0096,reserved,2026-07-04,K. Villanueva
